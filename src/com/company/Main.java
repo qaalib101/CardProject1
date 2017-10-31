@@ -1,9 +1,10 @@
 package com.company;
 
 import java.util.ArrayList;
-
+import java.lang.Exception;
 public class Main {
-
+    /*
+    * Repository URL: https://github.com/qaalib101/CardProject1 */
 
     public static void main(String[] args) {
         GameUI gameUI = new GameUI();
@@ -14,23 +15,28 @@ public class Main {
         int y = 0;
         int deckSize = dealer.getCardDeck().getDeck().size();
         int playerHandSize = players.size() * 3;
-        while (deckSize < playerHandSize ||  y < 2) {
             for (y = 0; y < 2; y++) {
-                dealer.passCards(players);
-                for (int x = 0; x < 3; x++) {
-                    for (Player p : players) {
-                        p.playCard(players);
-                    }
+                while(deckSize > playerHandSize) {
+                    try {
+                        dealer.passCards(players);
+                        for (int x = 0; x < 2; x++) {
+                            for (Player p : players) {
+                                p.playCard(players);
+                            }
 
-                    winner = dealer.getWinner();
-                    System.out.println("  ");
-                    System.out.println("Winner of this round is " + winner.name);
-                    System.out.println("  ");
-                    players.remove(winner);
-                    players.add(0, winner);
+                            winner = dealer.getWinner();
+                            System.out.println("  ");
+                            System.out.println("Winner of this round is " + winner.name);
+                            System.out.println("  ");
+                            players.remove(winner);
+                            players.add(0, winner);
+                        }
+                    }
+                    catch(IndexOutOfBoundsException ioe){
+                        break;
+                    }
                 }
             }
-        }
-        System.out.println("The winner is " + winner.name);
+        System.out.println("The winner of the game is " + winner.name);
     }
 }
