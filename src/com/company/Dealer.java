@@ -16,15 +16,8 @@ public class Dealer{
         for (Player p : players) {
                 // add the three cards and then delete the three cards form the deck
                 p.hand.getHand().addAll(cardDeck.getFirstThreeCards());
-                cardDeck.getDeck().removeAll(cardDeck.getFirstThreeCards());
         }
     }
-    public void erasePool(ArrayList<Card> pool){
-        for(Card c : pool){
-            pool.remove(0);
-        }
-    }
-
     public Deck getCardDeck() {
         return cardDeck;
     }

@@ -3,7 +3,7 @@ package com.company;
 import java.util.*;
 
 public class Deck {
-    private ArrayList<Card> deck;
+    ArrayList<Card> deck;
 
     Deck(){
         deck = new ArrayList<>();

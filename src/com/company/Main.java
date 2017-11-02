@@ -13,17 +13,15 @@ public class Main {
         Player winner = players.get(0);
 
         int y = 0;
-        int deckSize = dealer.getCardDeck().getDeck().size();
+        int deckSize = dealer.cardDeck.deck.size();
         int playerHandSize = players.size() * 3;
             for (y = 0; y < 2; y++) {
                 while(deckSize > playerHandSize) {
-                    try {
                         dealer.passCards(players);
-                        for (int x = 0; x < 2; x++) {
+                        for (int x = 0; x < 3; x++) {
                             for (Player p : players) {
                                 p.playCard(players);
                             }
-
                             winner = dealer.getWinner();
                             System.out.println("  ");
                             System.out.println("Winner of this round is " + winner.name);
@@ -31,10 +29,10 @@ public class Main {
                             players.remove(winner);
                             players.add(0, winner);
                         }
-                    }
-                    catch(IndexOutOfBoundsException ioe){
-                        break;
-                    }
+                        deckSize -= playerHandSize;
+                }
+                if(playerHandSize>deckSize){
+                    break;
                 }
             }
         System.out.println("The winner of the game is " + winner.name);
