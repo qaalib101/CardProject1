@@ -12,14 +12,19 @@ public class Player {
     Player(String name){
         this.name = name;
     }
+    // play card or set the play card
     public void playCard(ArrayList<Player> players) {
             Player firstPlayer = players.get(0);
+
+            // if first player then pick a random number
             if (firstPlayer.equals(this)){
                 int index = rnd.nextInt(hand.getHand().size());
                 playCard = hand.getHand().get(index);
                 setPlayCard(playCard);
                 hand.getHand().remove(index);
-            } else{
+            }
+            // if not then pick a card related to the winner
+            else{
                 Card playCard = this.hand.maxCardSameSuit(firstPlayer.getPlayCard());
                 setPlayCard(playCard);
                 hand.getHand().remove(playCard);

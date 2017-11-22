@@ -6,6 +6,7 @@ public class Deck {
     ArrayList<Card> deck;
 
     Deck(){
+        // create a new deck
         deck = new ArrayList<>();
         for(int x = 0; x < 1; x++){
             for(int y = 2; y < 11; y++) {
@@ -22,10 +23,11 @@ public class Deck {
             }
          }
     }
-
+// shuffle
     public void shuffleDeck(){
         Collections.shuffle(this.deck);
     }
+    // get the first three cards to pass it to the players then remove from deck
     public ArrayList<Card> getFirstThreeCards() {
         ArrayList<Card> set = new ArrayList<>();
         for(int x = 0; x < 3; x++){
@@ -33,9 +35,6 @@ public class Deck {
             deck.remove(0);
         }
         return set;
-    }
-    public void removeCard(Card c){
-        deck.remove(c);
     }
 
     public ArrayList<Card> getDeck() {
